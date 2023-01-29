@@ -1,0 +1,2477 @@
+make -C ./src/backend generated-headers
+make[1]: Entering directory '/home/krohn/project/postgresql-12.0/src/backend'
+make -C catalog distprep generated-header-symlinks
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/src/backend/catalog'
+make[2]: Nothing to be done for 'distprep'.
+make[2]: Nothing to be done for 'generated-header-symlinks'.
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/src/backend/catalog'
+make -C utils distprep generated-header-symlinks
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/src/backend/utils'
+make[2]: Nothing to be done for 'distprep'.
+make[2]: Nothing to be done for 'generated-header-symlinks'.
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/src/backend/utils'
+make[1]: Leaving directory '/home/krohn/project/postgresql-12.0/src/backend'
+rm -rf '/home/krohn/project/postgresql-12.0'/tmp_install
+/bin/mkdir -p '/home/krohn/project/postgresql-12.0'/tmp_install/log
+make -C '.' DESTDIR='/home/krohn/project/postgresql-12.0'/tmp_install install >'/home/krohn/project/postgresql-12.0'/tmp_install/log/install.log 2>&1
+make -j1  checkprep >>'/home/krohn/project/postgresql-12.0'/tmp_install/log/install.log 2>&1
+make -C src/test check
+make[1]: Entering directory '/home/krohn/project/postgresql-12.0/src/test'
+make -C perl check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/perl'
+make[2]: Nothing to be done for 'check'.
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/perl'
+make -C regress check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make -C ../../../contrib/spi
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/contrib/spi'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/contrib/spi'
+rm -rf ./testtablespace
+mkdir ./testtablespace
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dlpath=. --max-concurrent-tests=20  --schedule=./parallel_schedule  
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 1731
+============== creating database "regression"         ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test tablespace                   ... ok          177 ms
+parallel group (20 tests):  pg_lsn char int2 boolean name bit int8 regproc txid float4 text oid varchar int4 money uuid float8 enum numeric rangetypes
+     boolean                      ... ok          193 ms
+     char                         ... ok          189 ms
+     name                         ... ok          239 ms
+     varchar                      ... ok          248 ms
+     text                         ... ok          246 ms
+     int2                         ... ok          188 ms
+     int4                         ... ok          247 ms
+     int8                         ... ok          242 ms
+     oid                          ... ok          244 ms
+     float4                       ... ok          243 ms
+     float8                       ... ok          269 ms
+     bit                          ... ok          239 ms
+     numeric                      ... ok          403 ms
+     txid                         ... ok          239 ms
+     uuid                         ... ok          261 ms
+     enum                         ... ok          310 ms
+     money                        ... ok          258 ms
+     rangetypes                   ... ok          481 ms
+     pg_lsn                       ... ok          140 ms
+     regproc                      ... ok          235 ms
+parallel group (19 tests):  line path lseg circle numerology point interval macaddr8 time inet timetz macaddr strings tstypes date box timestamp polygon timestamptz
+     strings                      ... ok          284 ms
+     numerology                   ... ok          215 ms
+     point                        ... ok          227 ms
+     lseg                         ... ok           82 ms
+     line                         ... ok           67 ms
+     box                          ... ok          307 ms
+     path                         ... ok           59 ms
+     polygon                      ... ok          457 ms
+     circle                       ... ok          182 ms
+     date                         ... ok          260 ms
+     time                         ... ok          209 ms
+     timetz                       ... ok          224 ms
+     timestamp                    ... ok          432 ms
+     timestamptz                  ... ok          471 ms
+     interval                     ... ok          173 ms
+     inet                         ... ok          187 ms
+     macaddr                      ... ok          196 ms
+     macaddr8                     ... ok          174 ms
+     tstypes                      ... ok          218 ms
+parallel group (9 tests):  expressions comments misc_sanity horology type_sanity geometry oidjoins opr_sanity regex
+     geometry                     ... ok          240 ms
+     horology                     ... ok          204 ms
+     regex                        ... ok         4009 ms
+     oidjoins                     ... ok          283 ms
+     type_sanity                  ... ok          216 ms
+     opr_sanity                   ... ok          517 ms
+     misc_sanity                  ... ok          174 ms
+     comments                     ... ok           43 ms
+     expressions                  ... ok           40 ms
+test create_function_1            ... ok           47 ms
+test create_type                  ... ok           42 ms
+test create_table                 ... ok          321 ms
+test create_function_2            ... ok           17 ms
+parallel group (5 tests):  copyselect copydml insert_conflict insert copy
+     copy                         ... ok          442 ms
+     copyselect                   ... ok           57 ms
+     copydml                      ... ok           66 ms
+     insert                       ... ok          368 ms
+     insert_conflict              ... ok          201 ms
+parallel group (3 tests):  create_operator create_procedure create_misc
+     create_misc                  ... ok           90 ms
+     create_operator              ... ok           38 ms
+     create_procedure             ... ok           51 ms
+parallel group (5 tests):  index_including create_view index_including_gist create_index_spgist create_index
+     create_index                 ... ok          823 ms
+     create_index_spgist          ... ok          637 ms
+     create_view                  ... ok          424 ms
+     index_including              ... ok          272 ms
+     index_including_gist         ... ok          447 ms
+parallel group (15 tests):  roleattributes create_cast hash_func create_function_3 select create_aggregate typed_table create_am drop_if_exists constraints vacuum updatable_views inherit triggers errors
+     create_aggregate             ... ok          292 ms
+     create_function_3            ... ok          249 ms
+     create_cast                  ... ok          145 ms
+     constraints                  ... ok          607 ms
+     triggers                     ... ok         1394 ms
+     select                       ... ok          280 ms
+     inherit                      ... ok         1277 ms
+     typed_table                  ... ok          302 ms
+     vacuum                       ... ok          709 ms
+     drop_if_exists               ... ok          385 ms
+     updatable_views              ... ok         1231 ms
+     roleattributes               ... ok          137 ms
+     create_am                    ... ok          364 ms
+     hash_func                    ... ok          216 ms
+     errors                       ... ok         2374 ms
+test sanity_check                 ... ok         2794 ms
+parallel group (20 tests):  select_having namespace select_distinct_on delete random select_implicit select_into case prepared_xacts select_distinct transactions portals union arrays hash_index subselect aggregates btree_index update join
+     select_into                  ... ok          271 ms
+     select_distinct              ... ok          417 ms
+     select_distinct_on           ... ok          154 ms
+     select_implicit              ... ok          197 ms
+     select_having                ... ok          140 ms
+     subselect                    ... ok          925 ms
+     union                        ... ok          711 ms
+     case                         ... ok          307 ms
+     join                         ... ok         1129 ms
+     aggregates                   ... ok          969 ms
+     transactions                 ... ok          477 ms
+     random                       ... ok          171 ms
+     portals                      ... ok          662 ms
+     arrays                       ... ok          694 ms
+     btree_index                  ... ok          963 ms
+     hash_index                   ... ok          848 ms
+     update                       ... ok          980 ms
+     delete                       ... ok          129 ms
+     namespace                    ... ok          116 ms
+     prepared_xacts               ... ok          369 ms
+parallel group (20 tests):  init_privs security_label drop_operator tablesample password identity lock collate replica_identity groupingsets object_address matview gin generated spgist brin rowsecurity privileges gist join_hash
+     brin                         ... ok         4853 ms
+     gin                          ... ok         1221 ms
+     gist                         ... ok         5283 ms
+     spgist                       ... ok         4719 ms
+     privileges                   ... ok         5172 ms
+     init_privs                   ... ok          157 ms
+     security_label               ... ok          195 ms
+     collate                      ... ok          857 ms
+     matview                      ... ok         1123 ms
+     lock                         ... ok          851 ms
+     replica_identity             ... ok          866 ms
+     rowsecurity                  ... ok         4837 ms
+     object_address               ... ok         1080 ms
+     tablesample                  ... ok          462 ms
+     groupingsets                 ... ok          891 ms
+     drop_operator                ... ok          213 ms
+     password                     ... ok          701 ms
+     identity                     ... ok          831 ms
+     generated                    ... ok         1256 ms
+     join_hash                    ... ok         8009 ms
+parallel group (10 tests):  async alter_operator dbsize misc_functions tidscan tsrf alter_generic misc sysviews create_table_like
+     create_table_like            ... ok          283 ms
+     alter_generic                ... ok          210 ms
+     alter_operator               ... ok           82 ms
+     misc                         ... ok          234 ms
+     async                        ... ok           57 ms
+     dbsize                       ... ok           84 ms
+     misc_functions               ... ok          100 ms
+     sysviews                     ... ok          260 ms
+     tsrf                         ... ok          120 ms
+     tidscan                      ... ok          103 ms
+parallel group (5 tests):  amutils psql_crosstab psql rules stats_ext
+     rules                        ... ok          342 ms
+     psql                         ... ok          241 ms
+     psql_crosstab                ... ok           55 ms
+     amutils                      ... ok           44 ms
+     stats_ext                    ... ok          930 ms
+test select_parallel              ... ok         1178 ms
+test write_parallel               ... ok           82 ms
+parallel group (2 tests):  subscription publication
+     publication                  ... ok           65 ms
+     subscription                 ... ok           28 ms
+parallel group (17 tests):  advisory_lock portals_p2 equivclass xmlmap functional_deps combocid guc select_views dependency tsdicts tsearch window cluster bitmapops indirect_toast foreign_data foreign_key
+     select_views                 ... ok         3023 ms
+     portals_p2                   ... ok          210 ms
+     foreign_key                  ... ok         3810 ms
+     cluster                      ... ok         3348 ms
+     dependency                   ... ok         3054 ms
+     guc                          ... ok          327 ms
+     bitmapops                    ... ok         3427 ms
+     combocid                     ... ok          279 ms
+     tsearch                      ... ok         3143 ms
+     tsdicts                      ... ok         3060 ms
+     foreign_data                 ... ok         3598 ms
+     window                       ... ok         3195 ms
+     xmlmap                       ... ok          246 ms
+     functional_deps              ... ok          256 ms
+     advisory_lock                ... ok          106 ms
+     indirect_toast               ... ok         3448 ms
+     equivclass                   ... ok          206 ms
+parallel group (6 tests):  jsonpath_encoding json_encoding jsonpath jsonb_jsonpath json jsonb
+     json                         ... ok          163 ms
+     jsonb                        ... ok          264 ms
+     json_encoding                ... ok           52 ms
+     jsonpath                     ... ok           73 ms
+     jsonpath_encoding            ... ok           43 ms
+     jsonb_jsonpath               ... ok          113 ms
+parallel group (18 tests):  conversion prepare limit returning plancache xml polymorphism with temp copy2 rowtypes truncate sequence largeobject rangefuncs domain plpgsql alter_table
+     plancache                    ... ok          442 ms
+     limit                        ... ok          199 ms
+     plpgsql                      ... ok         1161 ms
+     copy2                        ... ok          673 ms
+     temp                         ... ok          630 ms
+     domain                       ... ok          795 ms
+     rangefuncs                   ... ok          774 ms
+     prepare                      ... ok          158 ms
+     conversion                   ... ok          140 ms
+     truncate                     ... ok          698 ms
+     alter_table                  ... ok         7788 ms
+     sequence                     ... ok          717 ms
+     polymorphism                 ... ok          530 ms
+     rowtypes                     ... ok          670 ms
+     returning                    ... ok          240 ms
+     largeobject                  ... ok          751 ms
+     with                         ... ok          604 ms
+     xml                          ... ok          494 ms
+parallel group (7 tests):  hash_part partition_info reloptions partition_join indexing partition_aggregate partition_prune
+     partition_join               ... ok          472 ms
+     partition_prune              ... ok         1173 ms
+     reloptions                   ... ok          193 ms
+     hash_part                    ... ok          100 ms
+     indexing                     ... ok         1018 ms
+     partition_aggregate          ... ok         1020 ms
+     partition_info               ... ok          176 ms
+test event_trigger                ... ok           98 ms
+test fast_default                 ... ok          121 ms
+test stats                        ... ok          209 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=======================
+ All 192 tests passed. 
+=======================
+
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C isolation check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../src/test/isolation/pg_isolation_regress --temp-instance=./tmp_check_iso --inputdir=. --outputdir=output_iso --bindir=     --schedule=./isolation_schedule
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 2983
+============== creating database "isolation_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test read-only-anomaly            ... ok           45 ms
+test read-only-anomaly-2          ... ok           83 ms
+test read-only-anomaly-3          ... ok           62 ms
+test read-write-unique            ... ok           99 ms
+test read-write-unique-2          ... ok           71 ms
+test read-write-unique-3          ... ok           42 ms
+test read-write-unique-4          ... ok           73 ms
+test simple-write-skew            ... ok           45 ms
+test receipt-report               ... ok         1115 ms
+test temporal-range-integrity     ... ok          136 ms
+test project-manager              ... ok          161 ms
+test classroom-scheduling         ... ok          155 ms
+test total-cash                   ... ok          133 ms
+test referential-integrity        ... ok          140 ms
+test ri-trigger                   ... ok          100 ms
+test partial-index                ... ok          306 ms
+test two-ids                      ... ok          277 ms
+test multiple-row-versions        ... ok         6222 ms
+test index-only-scan              ... ok         2415 ms
+test predicate-lock-hot-tuple     ... ok           32 ms
+test deadlock-simple              ... ok           36 ms
+test deadlock-hard                ... ok        10671 ms
+test deadlock-soft                ... ok          175 ms
+test deadlock-soft-2              ... ok         5181 ms
+test fk-contention                ... ok           43 ms
+test fk-deadlock                  ... ok          257 ms
+test fk-deadlock2                 ... ok          324 ms
+test fk-partitioned-1             ... ok          260 ms
+test fk-partitioned-2             ... ok          244 ms
+test eval-plan-qual               ... ok         1340 ms
+test lock-update-delete           ... ok          652 ms
+test lock-update-traversal        ... ok          121 ms
+test inherit-temp                 ... ok          202 ms
+test insert-conflict-do-nothing   ... ok          114 ms
+test insert-conflict-do-nothing-2 ... ok          152 ms
+test insert-conflict-do-update    ... ok          114 ms
+test insert-conflict-do-update-2  ... ok           98 ms
+test insert-conflict-do-update-3  ... ok           98 ms
+test insert-conflict-toast        ... ok          107 ms
+test insert-conflict-specconflict ... ok          700 ms
+test delete-abort-savept          ... ok          265 ms
+test delete-abort-savept-2        ... ok          148 ms
+test aborted-keyrevoke            ... ok          236 ms
+test multixact-no-deadlock        ... ok           69 ms
+test multixact-no-forget          ... ok          106 ms
+test lock-committed-update        ... ok          790 ms
+test lock-committed-keyupdate     ... ok          710 ms
+test update-locked-tuple          ... ok           81 ms
+test reindex-concurrently         ... ok          297 ms
+test propagate-lock-delete        ... ok          246 ms
+test tuplelock-conflict           ... ok          423 ms
+test tuplelock-update             ... ok        10272 ms
+test tuplelock-upgrade-no-deadlock ... ok          773 ms
+test freeze-the-dead              ... ok           96 ms
+test nowait                       ... ok           45 ms
+test nowait-2                     ... ok           35 ms
+test nowait-3                     ... ok           62 ms
+test nowait-4                     ... ok           76 ms
+test nowait-5                     ... ok          115 ms
+test skip-locked                  ... ok          185 ms
+test skip-locked-2                ... ok           37 ms
+test skip-locked-3                ... ok           80 ms
+test skip-locked-4                ... ok           96 ms
+test drop-index-concurrently-1    ... ok          138 ms
+test multiple-cic                 ... ok           80 ms
+test alter-table-1                ... ok         1834 ms
+test alter-table-2                ... ok          920 ms
+test alter-table-3                ... ok          579 ms
+test alter-table-4                ... ok          158 ms
+test create-trigger               ... ok          361 ms
+test sequence-ddl                 ... ok          140 ms
+test async-notify                 ... ok           89 ms
+test vacuum-reltuples             ... ok          127 ms
+test timeouts                     ... ok        40124 ms
+test vacuum-concurrent-drop       ... ok          223 ms
+test vacuum-conflict              ... ok          148 ms
+test vacuum-skip-locked           ... ok          144 ms
+test predicate-hash               ... ok          451 ms
+test predicate-gist               ... ok          402 ms
+test predicate-gin                ... ok          581 ms
+test partition-key-update-1       ... ok          344 ms
+test partition-key-update-2       ... ok          133 ms
+test partition-key-update-3       ... ok          345 ms
+test partition-key-update-4       ... ok          154 ms
+test plpgsql-toast                ... ok          203 ms
+test truncate-conflict            ... ok          117 ms
+test serializable-parallel        ... ok           86 ms
+test serializable-parallel-2      ... ok           43 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+======================
+ All 88 tests passed. 
+======================
+
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C modules check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules'
+make -C brin check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/brin'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/isolation/pg_isolation_regress --temp-instance=./tmp_check_iso --inputdir=. --outputdir=output_iso --bindir=     --dbname=isolation_regression summarization-and-inprogress-insertion
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 3610
+============== creating database "isolation_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test summarization-and-inprogress-insertion ... ok           55 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+TAP tests not enabled
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/brin'
+make -C commit_ts check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/commit_ts'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --temp-config=../../../../src/test/modules/commit_ts/commit_ts.conf --dbname=contrib_regression commit_timestamp
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 3668
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test commit_timestamp             ... ok           50 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+TAP tests not enabled
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/commit_ts'
+make -C dummy_seclabel check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/dummy_seclabel'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression dummy_seclabel
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 3722
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test dummy_seclabel               ... ok           50 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/dummy_seclabel'
+make -C snapshot_too_old check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/snapshot_too_old'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/isolation/pg_isolation_regress --temp-instance=./tmp_check_iso --inputdir=. --outputdir=output_iso --bindir=     --temp-config ../../../../src/test/modules/snapshot_too_old/sto.conf --dbname=isolation_regression sto_using_cursor sto_using_select sto_using_hash_index
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 3775
+============== creating database "isolation_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test sto_using_cursor             ... ok        30198 ms
+test sto_using_select             ... ok        24196 ms
+test sto_using_hash_index         ... ok         6076 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 3 tests passed. 
+=====================
+
+
+TAP tests not enabled
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/commit_ts'
+make -C dummy_seclabel check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/dummy_seclabel'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression dummy_seclabel
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 3722
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test dummy_seclabel               ... ok           50 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/dummy_seclabel'
+make -C snapshot_too_old check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/snapshot_too_old'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/isolation/pg_isolation_regress --temp-instance=./tmp_check_iso --inputdir=. --outputdir=output_iso --bindir=     --temp-config ../../../../src/test/modules/snapshot_too_old/sto.conf --dbname=isolation_regression sto_using_cursor sto_using_select sto_using_hash_index
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 3775
+============== creating database "isolation_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test sto_using_cursor             ... ok        30198 ms
+test sto_using_select             ... ok        24196 ms
+test sto_using_hash_index         ... ok         6076 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 3 tests passed. 
+=====================
+
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/snapshot_too_old'
+make -C test_bloomfilter check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_bloomfilter'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression test_bloomfilter
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 3843
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test test_bloomfilter             ... ok          298 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_bloomfilter'
+make -C test_ddl_deparse check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_ddl_deparse'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression test_ddl_deparse create_extension create_schema create_type create_conversion create_domain create_sequence_1 create_table create_transform alter_table create_view create_trigger create_rule comment_on alter_function alter_sequence alter_ts_config alter_type_enum opfamily defprivs matviews
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 3896
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test test_ddl_deparse             ... ok           16 ms
+test create_extension             ... ok           20 ms
+test create_schema                ... ok           16 ms
+test create_type                  ... ok           17 ms
+test create_conversion            ... ok           15 ms
+test create_domain                ... ok           15 ms
+test create_sequence_1            ... ok           15 ms
+test create_table                 ... ok           38 ms
+test create_transform             ... ok           15 ms
+test alter_table                  ... ok           23 ms
+test create_view                  ... ok           19 ms
+test create_trigger               ... ok           15 ms
+test create_rule                  ... ok           19 ms
+test comment_on                   ... ok           16 ms
+test alter_function               ... ok           15 ms
+test alter_sequence               ... ok           15 ms
+test alter_ts_config              ... ok           15 ms
+test alter_type_enum              ... ok           14 ms
+test opfamily                     ... ok           21 ms
+test defprivs                     ... ok           14 ms
+test matviews                     ... ok           21 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+======================
+ All 21 tests passed. 
+======================
+
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_ddl_deparse'
+make -C test_extensions check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_extensions'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression test_extensions test_extdepend
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 4030
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test test_extensions              ... ok           52 ms
+test test_extdepend               ... ok           32 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 2 tests passed. 
+=====================
+
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_extensions'
+make -C test_integerset check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_integerset'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression test_integerset
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 4088
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test test_integerset              ... ok         3643 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_integerset'
+make -C test_misc check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_misc'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+TAP tests not enabled
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_misc'
+make -C test_parser check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_parser'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression test_parser
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 4152
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test test_parser                  ... ok           17 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_parser'
+make -C test_pg_dump check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_pg_dump'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression test_pg_dump
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 4205
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test test_pg_dump                 ... ok           37 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+TAP tests not enabled
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_pg_dump'
+make -C test_predtest check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_predtest'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression test_predtest
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 4259
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test test_predtest                ... ok           38 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_predtest'
+make -C test_rbtree check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_rbtree'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression test_rbtree
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 4312
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test test_rbtree                  ... ok           31 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_rbtree'
+make -C test_rls_hooks check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_rls_hooks'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --temp-config=../../../../src/test/modules/test_rls_hooks/rls_hooks.conf --dbname=contrib_regression test_rls_hooks
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 4365
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test test_rls_hooks               ... ok           32 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_rls_hooks'
+make -C test_shm_mq check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_shm_mq'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression test_shm_mq
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 4418
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test test_shm_mq                  ... ok         5099 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/test_shm_mq'
+make -C unsafe_tests check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/unsafe_tests'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression rolenames
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 4478
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test rolenames                    ... ok          117 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/unsafe_tests'
+make -C worker_spi check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/modules/worker_spi'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../../src/test/isolation all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[6]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[6]: Nothing to be done for 'all'.
+make[6]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --temp-config ../../../../src/test/modules/worker_spi/dynamic.conf --dbname=contrib_regression worker_spi
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 4537
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test worker_spi                   ... ok          230 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules/worker_spi'
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/modules'
+make -C authentication check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/authentication'
+TAP tests not enabled
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/authentication'
+make -C recovery check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/recovery'
+TAP tests not enabled
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/recovery'
+make -C subscription check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/subscription'
+TAP tests not enabled
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/subscription'
+make[1]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test'
+make -C src/pl check
+make[1]: Entering directory '/home/krohn/project/postgresql-12.0/src/pl'
+make -C plpgsql check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/src/pl/plpgsql'
+make -C src check
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/pl/plpgsql/src'
+make -C ../../../../src/test/regress pg_regress
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=pl_regression plpgsql_call plpgsql_control plpgsql_domain plpgsql_record plpgsql_cache plpgsql_transaction plpgsql_trap plpgsql_trigger plpgsql_varprops
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 4597
+============== creating database "pl_regression"      ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test plpgsql_call                 ... ok           30 ms
+test plpgsql_control              ... ok           31 ms
+test plpgsql_domain               ... ok           31 ms
+test plpgsql_record               ... ok           75 ms
+test plpgsql_cache                ... ok           18 ms
+test plpgsql_transaction          ... ok           52 ms
+test plpgsql_trap                 ... ok         1041 ms
+test plpgsql_trigger              ... ok           18 ms
+test plpgsql_varprops             ... ok           22 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 9 tests passed. 
+=====================
+
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/pl/plpgsql/src'
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/src/pl/plpgsql'
+make[1]: Leaving directory '/home/krohn/project/postgresql-12.0/src/pl'
+make -C src/interfaces/ecpg check
+make[1]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg'
+make -C include check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/include'
+make[2]: Nothing to be done for 'check'.
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/include'
+make -C pgtypeslib check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/pgtypeslib'
+make[2]: Nothing to be done for 'check'.
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/pgtypeslib'
+make -C ecpglib check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/ecpglib'
+make[2]: Nothing to be done for 'check'.
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/ecpglib'
+make -C compatlib check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/compatlib'
+make[2]: Nothing to be done for 'check'.
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/compatlib'
+make -C preproc check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/preproc'
+make[2]: Nothing to be done for 'check'.
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/preproc'
+make -C test check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/test'
+make -C connect all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/test/connect'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/test/connect'
+make -C sql all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/test/sql'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/test/sql'
+make -C pgtypeslib all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/test/pgtypeslib'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/test/pgtypeslib'
+make -C preproc all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/test/preproc'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/test/preproc'
+make -C compat_informix all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/test/compat_informix'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/test/compat_informix'
+make -C compat_oracle all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/test/compat_oracle'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/test/compat_oracle'
+make -C thread all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/test/thread'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/test/thread'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ./pg_regress --dbname=ecpg1_regression,ecpg2_regression --create-role=regress_ecpg_user1,regress_ecpg_user2  --temp-instance=./tmp_check  --bindir= --encoding=SQL_ASCII   --schedule=./ecpg_schedule sql/twophase
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 4688
+============== creating database "ecpg1_regression"   ==============
+CREATE DATABASE
+ALTER DATABASE
+============== creating database "ecpg2_regression"   ==============
+CREATE DATABASE
+ALTER DATABASE
+============== creating role "regress_ecpg_user1"     ==============
+CREATE ROLE
+GRANT
+GRANT
+============== creating role "regress_ecpg_user2"     ==============
+CREATE ROLE
+GRANT
+GRANT
+============== running regression test queries        ==============
+test compat_informix/dec_test     ... ok            7 ms
+test compat_informix/charfuncs    ... ok            7 ms
+test compat_informix/rfmtdate     ... ok           11 ms
+test compat_informix/rfmtlong     ... ok           11 ms
+test compat_informix/rnull        ... ok           45 ms
+test compat_informix/sqlda        ... ok           24 ms
+test compat_informix/describe     ... ok           20 ms
+test compat_informix/test_informix ... ok           21 ms
+test compat_informix/test_informix2 ... ok           14 ms
+test compat_oracle/char_array     ... ok           14 ms
+test connect/test2                ... ok           17 ms
+test connect/test3                ... ok           22 ms
+test connect/test4                ... ok           10 ms
+test connect/test5                ... ok           72 ms
+test pgtypeslib/dt_test           ... ok           17 ms
+test pgtypeslib/dt_test2          ... ok            6 ms
+test pgtypeslib/num_test          ... ok           14 ms
+test pgtypeslib/num_test2         ... ok           13 ms
+test pgtypeslib/nan_test          ... ok           30 ms
+test preproc/array_of_struct      ... ok           17 ms
+test preproc/pointer_to_struct    ... ok           13 ms
+test preproc/autoprep             ... ok           26 ms
+test preproc/comment              ... ok           10 ms
+test preproc/cursor               ... ok           35 ms
+test preproc/define               ... ok           14 ms
+test preproc/init                 ... ok            4 ms
+test preproc/strings              ... ok           11 ms
+test preproc/type                 ... ok           12 ms
+test preproc/variable             ... ok           15 ms
+test preproc/outofscope           ... ok           17 ms
+test preproc/whenever             ... ok           14 ms
+test preproc/whenever_do_continue ... ok           15 ms
+test sql/array                    ... ok           18 ms
+test sql/binary                   ... ok           14 ms
+test sql/bytea                    ... ok           18 ms
+test sql/code100                  ... ok           34 ms
+test sql/copystdout               ... ok           13 ms
+test sql/createtableas            ... ok           15 ms
+test sql/define                   ... ok           14 ms
+test sql/desc                     ... ok           16 ms
+test sql/sqlda                    ... ok           31 ms
+test sql/describe                 ... ok           38 ms
+test sql/dynalloc                 ... ok           15 ms
+test sql/dynalloc2                ... ok           14 ms
+test sql/dyntest                  ... ok           17 ms
+test sql/execute                  ... ok           17 ms
+test sql/fetch                    ... ok           15 ms
+test sql/func                     ... ok           19 ms
+test sql/indicators               ... ok           16 ms
+test sql/oldexec                  ... ok           15 ms
+test sql/quote                    ... ok           15 ms
+test sql/show                     ... ok           11 ms
+test sql/insupd                   ... ok           14 ms
+test sql/parser                   ... ok           16 ms
+test sql/prepareas                ... ok           21 ms
+test thread/thread                ... ok           92 ms
+test thread/thread_implicit       ... ok           83 ms
+test thread/prep                  ... ok          145 ms
+test thread/alloc                 ... ok          126 ms
+test thread/descriptor            ... ok           12 ms
+test sql/twophase                 ... ok           13 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+======================
+ All 61 tests passed. 
+======================
+
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg/test'
+make[1]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/ecpg'
+make -C contrib check
+make[1]: Entering directory '/home/krohn/project/postgresql-12.0/contrib'
+make -C adminpack check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/contrib/adminpack'
+make -C ../../src/test/regress pg_regress
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../src/test/isolation all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression adminpack
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 5373
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test adminpack                    ... ok           24 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/contrib/adminpack'
+make -C amcheck check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/contrib/amcheck'
+make -C ../../src/test/regress pg_regress
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../src/test/isolation all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression check check_btree
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 5426
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test check                        ... ok           19 ms
+test check_btree                  ... ok         1544 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 2 tests passed. 
+=====================
+
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/contrib/amcheck'
+make -C auth_delay check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/contrib/auth_delay'
+make -C ../../src/test/regress pg_regress
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../src/test/isolation all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/contrib/auth_delay'
+make -C auto_explain check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/contrib/auto_explain'
+make -C ../../src/test/regress pg_regress
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../src/test/isolation all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/contrib/auto_explain'
+make -C bloom check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/contrib/bloom'
+make -C ../../src/test/regress pg_regress
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../src/test/isolation all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression bloom
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 5503
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test bloom                        ... ok           91 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/contrib/bloom'
+make -C btree_gin check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/contrib/btree_gin'
+make -C ../../src/test/regress pg_regress
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../src/test/isolation all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression install_btree_gin int2 int4 int8 float4 float8 money oid timestamp timestamptz time timetz date interval macaddr macaddr8 inet cidr text varchar char bytea bit varbit numeric enum uuid name bool bpchar
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 5557
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test install_btree_gin            ... ok           46 ms
+test int2                         ... ok           18 ms
+test int4                         ... ok           17 ms
+test int8                         ... ok           17 ms
+test float4                       ... ok           17 ms
+test float8                       ... ok           16 ms
+test money                        ... ok           17 ms
+test oid                          ... ok           17 ms
+test timestamp                    ... ok           16 ms
+test timestamptz                  ... ok           17 ms
+test time                         ... ok           17 ms
+test timetz                       ... ok           19 ms
+test date                         ... ok           20 ms
+test interval                     ... ok           17 ms
+test macaddr                      ... ok           17 ms
+test macaddr8                     ... ok           17 ms
+test inet                         ... ok           17 ms
+test cidr                         ... ok           18 ms
+test text                         ... ok           17 ms
+test varchar                      ... ok           18 ms
+test char                         ... ok           17 ms
+test bytea                        ... ok           17 ms
+test bit                          ... ok           16 ms
+test varbit                       ... ok           17 ms
+test numeric                      ... ok           17 ms
+test enum                         ... ok          187 ms
+test uuid                         ... ok           20 ms
+test name                         ... ok           18 ms
+test bool                         ... ok           18 ms
+test bpchar                       ... ok           17 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+======================
+ All 30 tests passed. 
+======================
+
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/contrib/btree_gin'
+make -C btree_gist check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/contrib/btree_gist'
+make -C ../../src/test/regress pg_regress
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../src/test/isolation all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression init int2 int4 int8 float4 float8 cash oid timestamp timestamptz time timetz date interval macaddr macaddr8 inet cidr text varchar char bytea bit varbit numeric uuid not_equal enum
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 5727
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test init                         ... ok           61 ms
+test int2                         ... ok           22 ms
+test int4                         ... ok           21 ms
+test int8                         ... ok           21 ms
+test float4                       ... ok           22 ms
+test float8                       ... ok           22 ms
+test cash                         ... ok           22 ms
+test oid                          ... ok           21 ms
+test timestamp                    ... ok           22 ms
+test timestamptz                  ... ok           28 ms
+test time                         ... ok           22 ms
+test timetz                       ... ok           29 ms
+test date                         ... ok           21 ms
+test interval                     ... ok           23 ms
+test macaddr                      ... ok           22 ms
+test macaddr8                     ... ok           21 ms
+test inet                         ... ok           44 ms
+test cidr                         ... ok           27 ms
+test text                         ... ok           30 ms
+test varchar                      ... ok           26 ms
+test char                         ... ok           28 ms
+test bytea                        ... ok           29 ms
+test bit                          ... ok           22 ms
+test varbit                       ... ok           23 ms
+test numeric                      ... ok           40 ms
+test uuid                         ... ok           21 ms
+test not_equal                    ... ok           30 ms
+test enum                         ... ok           22 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+======================
+ All 28 tests passed. 
+======================
+
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/contrib/btree_gist'
+make -C citext check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/contrib/citext'
+make -C ../../src/test/regress pg_regress
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../src/test/isolation all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression citext
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 5889
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test citext                       ... ok          138 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/contrib/citext'
+make -C cube check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/contrib/cube'
+make -C ../../src/test/regress pg_regress
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../src/test/isolation all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression cube cube_sci
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 5944
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test cube                         ... ok          137 ms
+test cube_sci                     ... ok           14 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 2 tests passed. 
+=====================
+
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/contrib/cube'
+make -C dblink check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/contrib/dblink'
+make -C ../../src/test/regress pg_regress
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../src/test/isolation all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dlpath=../../src/test/regress --dbname=contrib_regression paths dblink
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 6001
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test paths                        ... ok           17 ms
+test dblink                       ... ok          204 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 2 tests passed. 
+=====================
+
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/contrib/dblink'
+make -C dict_int check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/contrib/dict_int'
+make -C ../../src/test/regress pg_regress
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../src/test/isolation all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression dict_int
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 6076
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test dict_int                     ... ok           21 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/contrib/dict_int'
+make -C dict_xsyn check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/contrib/dict_xsyn'
+make -C ../../src/test/regress pg_regress
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../src/test/isolation all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression dict_xsyn
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 6129
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test dict_xsyn                    ... ok           19 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/contrib/dict_xsyn'
+make -C earthdistance check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/contrib/earthdistance'
+make -C ../../src/test/regress pg_regress
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../src/test/isolation all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression earthdistance
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 6182
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test earthdistance                ... ok          193 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/contrib/earthdistance'
+make -C file_fdw check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/contrib/file_fdw'
+make -C ../../src/test/regress pg_regress
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../src/test/isolation all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression file_fdw
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 6235
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test file_fdw                     ... ok          112 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/contrib/file_fdw'
+make -C fuzzystrmatch check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/contrib/fuzzystrmatch'
+make -C ../../src/test/regress pg_regress
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../src/test/isolation all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression fuzzystrmatch
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 6288
+============== creating database "contrib_regression" ==============
+CREATE DATABASE
+ALTER DATABASE
+============== running regression test queries        ==============
+test fuzzystrmatch                ... ok           18 ms
+============== shutting down postmaster               ==============
+============== removing temporary instance            ==============
+
+=====================
+ All 1 tests passed. 
+=====================
+
+make[2]: Leaving directory '/home/krohn/project/postgresql-12.0/contrib/fuzzystrmatch'
+make -C hstore check
+make[2]: Entering directory '/home/krohn/project/postgresql-12.0/contrib/hstore'
+make -C ../../src/test/regress pg_regress
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/regress'
+make -C ../../src/test/isolation all
+make[3]: Entering directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+make -C ../../../src/interfaces/libpq all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[5]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[5]: Nothing to be done for 'all'.
+make[5]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/interfaces/libpq'
+make -C ../../../src/port all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/port'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/port'
+make -C ../../../src/common all
+make[4]: Entering directory '/home/krohn/project/postgresql-12.0/src/common'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/home/krohn/project/postgresql-12.0/src/common'
+make[3]: Leaving directory '/home/krohn/project/postgresql-12.0/src/test/isolation'
+PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/bin:$PATH" LD_LIBRARY_PATH="/home/krohn/project/postgresql-12.0/tmp_install/opt/PostgreSQL-12/lib"  ../../src/test/regress/pg_regress --temp-instance=./tmp_check --inputdir=. --bindir=     --dbname=contrib_regression hstore
+============== creating temporary instance            ==============
+============== initializing database system           ==============
+============== starting postmaster                    ==============
+running on port 54464 with PID 6341
+============== creating database "contrib_regression" ==============
