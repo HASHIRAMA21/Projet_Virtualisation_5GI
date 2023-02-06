@@ -10,7 +10,7 @@
  apt purge xen-system-amd64 xen-hypervisor-common xen-hypervisor-4.9-amd64 xen-hypervisor-4.11-amd64 xenstore-utils xen-utils-common xen-tools xe-guest-utilities  libxen-dev qemu-system qemu-system-common qemu-block-extra qemu-efi-aarch64 qemu-efi-arm qemu-slof qemu-system qemu-system-arm qemu-system-common qemu-system-data qemu-system-gui qemu-system-mips qemu-system-misc qemu-system-ppc qemu-system-s390x qemu-system-sparc qemu-system-x86 qemu-user qemu-user-binfmt qemu-utils
 apt autoremove
 
-#Upgrade to Ubuntu 20.10
+# Upgrade to Ubuntu 20.10
 Edit /etc/update-manager/release-upgrades and set Prompt=normal in order to upgrade to latest version (non LTS).
 
 do-release-upgrade
